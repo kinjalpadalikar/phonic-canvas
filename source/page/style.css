@@ -3,7 +3,7 @@
  margin:0px; 
 }
 
- .things_to_do{
+ .boxes{
  	float:left;
 	width:21%;
 	min-height:358px;
@@ -17,86 +17,176 @@
    border-style: solid;
 }
    
-   .life_health
+   .heading
    {
       border-color:#4D505B;
       border-style: solid;
       border-width: 1px;
       background-color: #4D505B;
       float:left;
-      height:200px;
+      height:570px;
       width:100%;
-      padding-top:50px;
-      padding-bottom:5%;
-      margin-bottom:5%;
-   
+      padding-top:1px;
+      padding-bottom:1%;
+      margin-bottom:50px;
+      display:block; margin:auto; 
    }
 
-   .box_2
+   body{
+      background-color:#4D505B;
+   }
+
+   .options
    {
-      float:left;
-      width:49%;
-      height:21px;
-      background-color:#f6f8f9;
-      border-color:#c6d3d9;
+      float :left;
+      width:100%;
+      height:150px;
+      background-color:#4D505B;
+      border-color:#4D505B;
       border-style: solid;
       border-width: 1px;
-      font-size:15px;
+      font-size:30px;
+      padding-top: 20px;
+      padding-bottom: 50px;
+      color:white;
+      margin-bottom: 30px;
+      font-family: raleway;
       text-align: center;
-      padding-top: 5px;
-      font-weight: 400;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      color:#4c666e;
-      margin-top:21px;
-      margin-bottom: 14px;
-      font-family: sans-serif;
    }
 
-   .box_1
+   .upload
    {
-      float:left;
-      width:49%;
-      height:21px;
-      background-color:#f6f8f9;
-      border-color:#c6d3d9;
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #1b6a81;
+      border-color: #1b6a81;
       border-style: solid;
       border-width: 1px;
-      font-size:15px;
+      font-size: 20px;
+      padding-top: 8px;
+      
+      color: white;
+      font-family: raleway;
       text-align: center;
-      padding-top: 5px;
-      font-weight: 400;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-      color:#4c666e;
-      margin-top:21px;
-      margin-bottom: 14px;
-      font-family: sans-serif;
    }
 
-   .right_box_2
+   .undo
    {
-      float:left;
-      width:64%;
-      height:21px;
-      background-color:#f6f8f9;
-      border-color:#c6d3d9;
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #dc557a;
+      border-color: #dc557a;
       border-style: solid;
       border-width: 1px;
-      font-size:15px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
       text-align: center;
-      padding-top: 5px;
-      font-weight: 400;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      color:#4c666e;
-      margin-top:21px;
-      margin-bottom: 14px;
-      font-family: sans-serif;
    }
 
-   
-   
+.re-size
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #f6624a;
+      border-color: #f6624a;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
 
+.crop
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #80628b;
+      border-color: #80628b;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
+
+.rotate
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #16a79d;
+      border-color: #16a79d;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
+
+.exposure
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #4551C8;
+      border-color: #4551C8;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
+
+.blur
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #D83548;
+      border-color: #D83548;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
    
+   .sharpen
+   {
+      float: left;
+      width: 75px;
+      height: 27px;
+      background-color: #69b1cb;
+      border-color: #69b1cb;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 20px;
+      padding-top: 8px;
+      padding-left: 4%;
+      color: white;
+      font-family: raleway;
+      text-align: center;
+   }
    
