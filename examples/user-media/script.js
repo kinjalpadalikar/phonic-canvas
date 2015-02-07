@@ -68,7 +68,7 @@ $(document).ready(function() {
 	});
 });
 
-function startListening() {
+var startListening = function() {
 	clearCanvas();
 
 	// get the input audio stream and set up the nodes
