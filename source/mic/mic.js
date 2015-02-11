@@ -1,75 +1,76 @@
-var get_user_wave_form = function(callBack){
-	navigator.getUserMedia = ( navigator.getUserMedia ||
-						   navigator.webkitGetUserMedia ||
-						   navigator.mozGetUserMedia ||
-						   navigator.msGetUserMedia);
-
-	if (navigator.getUserMedia) {
-		console.log("getUserMedia is supported");
-	}
-	else {
-		console.log("getUserMedia not supported");
-	}
-
-	window.AudioContext = (function(){
-		return  window.webkitAudioContext || window.AudioContext || window.mozAudioContext;
-	})();
-
-	$(document).ready(function() {
-		var audioContext = null;
-		try {
-			audioContext = new AudioContext();
-		} catch(e) {
-			alert('Web Audio API is not supported in this browser');
-		}
-
-		startListening(audioContext , callBack);
-
-	});
-
+$(document).ready(function() {
+    var running = false;
+    var mic = new Wit.Microphone();
+    var info = function (msg) {
+      document.getElementById("status").innerHTML = msg;
+    };
+    var error = function (msg) {
+      document.getElementById("status").innerHTML = msg;
+    };
+    mic.onready = function () {
+      if (!running) {
+    info("Microphone is ready to record");
+    console.log("Ready");
+          running = true;
+          window.setTimeout(function(){ mic.start();  }, 200);	
 }
-var startListening = function (audioContext , callBack) {
-	var setupAudioNodesWrapper = function (stream); {
-			setupAudioNodes (audioContext , callBack , stream);
-	}
-	try {
-		navigator.getUserMedia(
-		  { video: false,
-			audio: true},
-		  setupAudioNodesWrapper,
-		  onError);
-	} catch (e) {
-		alert('webkitGetUserMedia threw exception :' + e);
-	}	
-}
-var setupAudioNodes = function (audioContext , callBack , stream) {
-	var sourceNode = audioContext.createMediaStreamSource(stream);
-	var audioStream = stream;
+    };
+    mic.onaudiostart = function () {
+      info("Recording started");
+      console.log("Recording started");
+      
+      window.setTimeout(function(){ mic.stop();  }, 5000);	
+    
+      error("");
+    };
+    mic.onaudioend = function () {
+      info("Recording stopped, processing started");
+      console.log("audioend");
+running = false;
+      
+    };
+    mic.onresult = function (intent, entities, text, confidence) {
+      var r = kv("intent", intent);
+var entity = undefined;
 
-	var analyserNode   = audioContext.createAnalyser();
-	var javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
-	var waveForm = new Deque ();
-	// setup the event handler that is triggered every time enough samples have been collected
-	// trigger the audio analysis and draw one column in the display based on the results
-	javascriptNode.onaudioprocess = function () {
+      for (var k in entities) {
+        var e = entities[k];
 
-		var amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
-		analyserNode.getByteTimeDomainData(amplitudeArray);
-		saveSamplesAndPossiblyTriggerCallBack (callBack , waveForm , amplitudeArray);
+        if (!(e instanceof Array)) {
+          entity = kv(k, e.value);
+    r += entity;
+        } else {
+          for (var i = 0; i < e.length; i++) {
+            entity = kv(k, e[i].value);
+            r += entity;
+          }
+        }
+      }
 
-	}
+      console.log(intent + ":" + entity + ":" + text.msg_body + ":" + confidence);
 
-	// Now connect the nodes together
-	// Do not connect source node to destination - to avoid feedback
-	sourceNode.connect(analyserNode);
-	analyserNode.connect(javascriptNode);
-	javascriptNode.connect(audioContext.destination);
-}
-var saveSamplesAndPossiblyTriggerCallBack = function (callBack , waveForm , amplitudeArray) {
-	waveForm.push(amplitudeArray);
-	if (waveForm.size()>500){
-	callBack (waveForm);
-	waveForm.shift ();
-}
-	
-}
+      document.getElementById("result").innerHTML = r+text.msg_body;
+      var action = new Object();
+      action.name = intent;
+      perform(action);
+
+    };
+    mic.onerror = function (err) {
+      error("Error: " + err);
+    };
+    mic.onconnecting = function () {
+      info("Microphone is connecting");
+    };
+    mic.ondisconnected = function () {
+      info("Microphone is not connected");
+    };
+
+    mic.connect("I6XF2VG44VRAS72NEAAFJDXE6ZBRJPF2");
+
+    function kv (k, v) {
+      if (toString.call(v) !== "[object String]") {
+        v = JSON.stringify(v);
+      }
+      return k + "=" + v + "\n";
+    }
+}); 

@@ -4,18 +4,35 @@
 }
 
  .boxes{
- 	float:left;
-	width:21%;
+ 	float:none;
+	width:324px;
 	min-height:358px;
 	background-color:#f2f5f6;
-	margin-right:0.9%;
-	margin-left:0.9%;
-   padding:1%;
+   padding:12px;
    border-width:1px;
    border-color:#9DACB2;
    border-collapse:separate;
    border-style: solid;
+   box-sizing: border-box;
 }
+   .box_container
+   {
+      height:570px;
+
+      vertical-align:top;
+      margin:0 3%;
+      display:inline-block;
+
+      
+   }
+
+   .all_boxes
+   {
+      height:570px;
+      width:100%;
+      text-align:center;
+      
+   }
    
    .heading
    {
@@ -57,136 +74,124 @@
    .upload
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 55px;
       background-color: #1b6a81;
       border-color: #1b6a81;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      padding-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      
    }
 
    .undo
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #dc557a;
       border-color: #dc557a;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
 
 .re-size
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #f6624a;
       border-color: #f6624a;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
 
 .crop
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #80628b;
       border-color: #80628b;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
 
 .rotate
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #16a79d;
       border-color: #16a79d;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
 
 .exposure
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #4551C8;
       border-color: #4551C8;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
 
 .blur
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #D83548;
       border-color: #D83548;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
    
    .sharpen
    {
       float: left;
-      width: 75px;
-      height: 27px;
+      width: 150px;
+      height: 75px;
       background-color: #69b1cb;
       border-color: #69b1cb;
       border-style: solid;
       border-width: 1px;
-      font-size: 20px;
-      padding-top: 8px;
-      padding-left: 4%;
+      font-size: 30px;
       color: white;
       font-family: raleway;
-      text-align: center;
+      
    }
+   
    
