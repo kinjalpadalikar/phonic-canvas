@@ -7,13 +7,12 @@
  	float:none;
 	width:324px;
 	min-height:358px;
-	background-color:#f2f5f6;
+	background-color:black;
    padding:12px;
-   border-width:1px;
-   border-color:#9DACB2;
-   border-collapse:separate;
-   border-style: solid;
    box-sizing: border-box;
+   color:white;
+   font-size:20px;
+   font-family: helvetica neue;
 }
    .box_container
    {
@@ -74,7 +73,7 @@
    .upload
    {
       float: left;
-      width: 150px;
+      width: 146.5px;
       height: 55px;
       background-color: #1b6a81;
       border-color: #1b6a81;
@@ -83,17 +82,17 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
-      padding-top: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
       
    }
 
    .undo
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #dc557a;
       border-color: #dc557a;
       border-style: solid;
@@ -101,14 +100,18 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
 
 .re-size
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #f6624a;
       border-color: #f6624a;
       border-style: solid;
@@ -116,14 +119,18 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
 
-.crop
+.contrast
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #80628b;
       border-color: #80628b;
       border-style: solid;
@@ -131,14 +138,18 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
 
 .rotate
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #16a79d;
       border-color: #16a79d;
       border-style: solid;
@@ -146,14 +157,18 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
 
 .exposure
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #4551C8;
       border-color: #4551C8;
       border-style: solid;
@@ -161,29 +176,37 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
 
 .blur
    {
       float: left;
-      width: 150px;
-      height: 75px;
-      background-color: #D83548;
-      border-color: #D83548;
+      width: 146.5px;
+      height: 55px;
+      background-color: #cf4858;
+      border-color: #cf4858;
       border-style: solid;
       border-width: 1px;
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
       
    }
    
    .sharpen
    {
       float: left;
-      width: 150px;
-      height: 75px;
+      width: 146.5px;
+      height: 55px;
       background-color: #69b1cb;
       border-color: #69b1cb;
       border-style: solid;
@@ -191,6 +214,27 @@
       font-size: 30px;
       color: white;
       font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
+      
+   }
+
+   .brightness
+   {
+      float: left;
+      width: 146.5px;
+      height: 55px;
+      background-color: #f4ac42;
+      border-color: #f4ac42;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 30px;
+      color: white;
+      font-family: raleway;
+      padding-top: 22px;
+      margin-left: 15px;
+      margin-right: 15px;
       
    }
    
