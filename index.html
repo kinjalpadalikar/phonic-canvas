@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Edit Photos With Your Voice</title>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="source/mic/microphone/microphone.min.js"> </script>
@@ -8,90 +10,64 @@
 	<script src="source/image/image.js"> </script>
 	<script src="source/action/action.js"> </script>
 	<script src="source/mic/mic.js"> </script>
-	<title>The voice photo editing website</title>
 	<link rel="stylesheet" type="text/css" href="source/page/style.css">
 </head>
 <body>
-	
 		
-		<div class="heading"> 
-			<div class="image"><img src="source/page/images/filters.jpg" style="display:block; margin:auto; " alt="image failed to load"></img>
-			</div>
+	<div class="heading"> 
+		<div class="image">
+			<img src="source/page/images/filters.jpg" style="display:block; margin:auto; " alt="image failed to load"></img>
 		</div>
-			
-		<div class = "options">
-			
-		  <div class="upload">Upload 
-		
-	       </div>
-	     <div class="undo">Undo 
-		
-	      </div>
-	     
-	     <div class="re-size">Re-size
-	      </div> 
-		
-		<div class="contrast">Contrast
-		
-	      </div>
-
-	     <div class="rotate">Rotate
-		
-	      </div>
-
-	     <div class="exposure">Exposure 
-		
-	      </div>
-	     <div class="blur">Blur 
-		
-	      </div>
-
-	     <div class="sharpen">Sharpen 
-		
-	      </div>
-	      <div class="brightness">Brightness
-		
-	      </div>
-	    </div>
-
-	     <div id= "status"></div>
-	     <div id= "result"></div>
-		
-		<div class="all_boxes">
-
-			<div class = "box_container" id= "box1">
-				<div class="boxes" id = "filter_box1">
-					<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image"></img>
-					<div id="original_name"> Original </div>
-				</div>
-
-			</div>
-
-			<div class = "box_container" id = "box2"> 
-				<div class="boxes">
-					<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image2"></img>
-					<div> Retro </div>
-				</div> 
-			</div>
-
-			
-			<div class = "box_container" id = "box3"> 
-				<div class="boxes">
-					<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image3"></img>
-					<div> Lomo </div>
-				</div>
-			</div>
-
-
-			
-			<div class = "box_container" id = "box4"> 
-				<div class="boxes">
-					<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image4"></img>
-					<div> Hdr </div>
-				</div>
-		    </div>
-		</div>
-
 	</div>
+		
+	<div class = "options">
+		<div class="upload">Upload </div>
+		<div class="undo">Undo </div>
+		<div class="re-size">Re-size</div> 
+		<div class="contrast">Contrast</div>
+		<div class="rotate">Rotate</div>
+		<div class="exposure">Exposure</div>
+		<div class="blur">Blur </div>
+		<div class="sharpen">Sharpen</div>
+		<div class="brightness">Brightness</div>
+	</div>
+
+	<div id= "status"></div>
+	<div id= "result"></div>
+	
+	<div class="all_boxes">
+
+		<div class = "box_container" id= "box1">
+			<div class="boxes" id = "filter_box1">
+				<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image"></img>
+				<div id="original_name"> Original </div>
+			</div>
+
+		</div>
+
+		<div class = "box_container" id = "box2"> 
+			<div class="boxes">
+				<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image2"></img>
+				<div> Retro </div>
+			</div> 
+		</div>
+
+		
+		<div class = "box_container" id = "box3"> 
+			<div class="boxes">
+				<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image3"></img>
+				<div> Lomo </div>
+			</div>
+		</div>
+
+		<div class = "box_container" id = "box4"> 
+			<div class="boxes">
+				<img src="source/page/images/pic1.jpg" alt="image failed to load" id="filter_box_image4"></img>
+				<div> Hdr </div>
+			</div>
+		</div>
+	</div>
+
+</div>
 </body>    
 </html>

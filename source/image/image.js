@@ -1,14 +1,20 @@
 var makeItBigger = function(name){
 	var elements = document.getElementsByClassName("boxes");
 	elements[0].style.width = "524px";
-	Caman(name, function () {
-  this.resize({
-    width: 500
-  });
 
-  // You still have to call render!
-  this.render();
-});
+	Caman(name, function () {
+		this.resize({
+			width: 500
+	 	});
+
+		// You still have to call render!
+		this.render(function() {
+			var imageElement = document.getElementById("filter_box_image");
+			imageElement.style.width  = "500px";
+			imageElement.style.height = "";
+		});
+	});
+	
 	console.log ("making it bigger");
 } 
 var initializeImageLibrary = function (){
@@ -145,14 +151,20 @@ var applySepiaFilter = function(name) {
 var makeItSmaller = function(name){
 	var elements = document.getElementsByClassName("boxes");
 	elements[0].style.width = "224px";
-	Caman(name, function () {
-  this.resize({
-    width: 200
-  });
 
-  // You still have to call render!
-  this.render();
-});
+	Caman(name, function () {
+		this.resize({
+		  width: 200
+		});
+
+		// You still have to call render!
+		this.render(function() {
+			var imageElement = document.getElementById(name.slice(1));
+			imageElement.style.width  = "200px";
+			imageElement.style.height = "";
+		});
+	});
+	
 	console.log ("making it smaller");
 } 
 
