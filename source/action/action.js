@@ -54,6 +54,9 @@ var perform = function(action){
 	case 'next_image':
 		nextImage("#filter_box_image");
 		break;
+	case 'previous_image':
+		previousImage("#filter_box_image");
+		break;
 	case 'save_image':
 		saveImage("#filter_box_image");
 		break;

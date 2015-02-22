@@ -308,6 +308,12 @@ var loadMyImages = function(name) {
 	showCurrentImage(name);
 }
 
+var previousImage = function(name) {
+	imageManager.previousImage();
+	
+	showCurrentImage(name);
+}
+
 var nextImage = function(name) {
 	imageManager.nextImage();
 	
