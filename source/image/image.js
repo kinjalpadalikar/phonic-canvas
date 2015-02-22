@@ -9,7 +9,7 @@ var makeItBigger = function(name){
 
 		// You still have to call render!
 		this.render(function() {
-			var imageElement = document.getElementById("filter_box_image");
+			var imageElement = document.getElementById(name.slice(1));
 			imageElement.style.width  = "500px";
 			imageElement.style.height = "";
 		});
@@ -17,7 +17,44 @@ var makeItBigger = function(name){
 	
 	console.log ("making it bigger");
 } 
-var initializeImageLibrary = function (){
+
+var makeItNormalSize = function(name, applyEffects) {
+	var elements = document.getElementsByClassName("boxes");
+	elements[0].style.width = "324px";
+
+	Caman(name, function () {
+		this.resize({
+			width: 300
+	 	});
+
+		// You still have to call render!
+		this.render(function() {
+			var imageElement = document.getElementById(name.slice(1));
+			imageElement.style.width  = "300px";
+			imageElement.style.height = "";
+			
+			if (applyEffects) {
+				applyEffects();
+			}
+		});
+	});
+	
+	console.log ("making it normal size");
+}
+
+var imageManager = null;
+
+var loadImage = function() {
+	for (var i = 0; i < this.files.length; ++i) {
+		imageManager.loadImageFromFile(this.files[i]);
+	}
+	
+	if (this.files.length > 0) {	
+		showAllCurrentImages();
+	}
+}
+
+var initializeImageLibrary = function () {
 	Caman.Filter.register("sharpen", function () {
 	 	this.processKernel("sharpen", [
 		    0, -1, 0,
@@ -32,6 +69,11 @@ var initializeImageLibrary = function (){
 		    1, 1, 1
 		  ]);
 	});
+
+	imageManager = new ImageManager();
+
+	$("#upload_button").change(loadImage);
+
 	drawImages();
 }
 
@@ -66,9 +108,20 @@ var removeElementById = function(id) {
 		return;
 	}
 	element.parentNode.removeChild(element);
-
-
 }
+
+var replaceElementById = function(id, newElement) {
+	var element = document.getElementById(id);
+	if (element === null) {
+		return;
+	}
+	
+	var parentNode = element.parentNode;
+	
+	parentNode.insertBefore(newElement, element);
+	parentNode.removeChild(element);
+}
+
 var centerElementById = function(id) {
 	var element = document.getElementById(id);
 	if (element === null) {
@@ -96,6 +149,7 @@ var widenElementById = function(id) {
 }
 
 var applyDefaultEffects = function() {
+	makeItNormalSize("#filter_box_image");
 	applyRetroFilter("#filter_box_image2");
 	applyLomoFilter("#filter_box_image3");
 	applyHdrFilter("#filter_box_image4");
@@ -184,9 +238,14 @@ var increaseBrightness = function(name){
 
 var resetImage = function(name){
 	Caman(name, function () {
-  	this.reset();
-  	this.render();
-});
+		this.reset();
+		this.render(function() {
+			var imageElement = document.getElementById(name.slice(1));
+			imageElement.style.width  = "300px";
+			imageElement.style.height = "";
+		});
+	});
+	
 	var elements = document.getElementsByClassName("boxes");
 	elements[0].style.width = "324px";
 	console.log ("resetting image");
@@ -202,8 +261,63 @@ var sharpenImage = function(name){
 
 var blurImage = function(name){
 	Caman(name, function () {
-  	this.blur();
-  	this.render();
-});
+		this.blur();
+		this.render();
+	});
 	console.log ("blurring image");
 }
+
+var showAllCurrentImages = function() {
+
+	showCurrentImage('#filter_box_image',  function() {  });
+	showCurrentImage('#filter_box_image2', function() { applyRetroFilter("#filter_box_image2"); });
+	showCurrentImage('#filter_box_image3', function() { applyLomoFilter("#filter_box_image3");  });
+	showCurrentImage('#filter_box_image4', function() { applyHdrFilter("#filter_box_image4");   });
+}
+
+var showCurrentImage = function(name, effects) {
+
+	if (!document.getElementById(name.slice(1))) {
+		return;
+	}
+
+	var currentImage = imageManager.getCurrentImage();
+	
+	var reader = new FileReader();
+
+	$(reader).load(function(e) {
+		
+		var image = new Image();
+		
+		image.src = e.target.result;
+		image.id  = name.slice(1);
+		
+		replaceElementById(name.slice(1), image);
+
+		makeItNormalSize(name, effects);
+	});
+
+	reader.readAsDataURL(currentImage);
+	
+}
+
+var loadMyImages = function(name) {
+
+	imageManager.loadImages();
+	
+	showCurrentImage(name);
+}
+
+var nextImage = function(name) {
+	imageManager.nextImage();
+	
+	showCurrentImage(name);
+}
+
+var saveImage = function(name) {
+	Caman(name, function() {
+		this.save();
+	});
+}
+
+

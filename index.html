@@ -7,9 +7,12 @@
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="source/mic/microphone/microphone.min.js"> </script>
 	<script src="source/image/caman.full.min.js"> </script>
+
+	<script src="source/library/library.js"> </script>
 	<script src="source/image/image.js"> </script>
 	<script src="source/action/action.js"> </script>
 	<script src="source/mic/mic.js"> </script>
+
 	<link rel="stylesheet" type="text/css" href="source/page/style.css">
 </head>
 <body>
@@ -21,7 +24,10 @@
 	</div>
 		
 	<div class = "options">
-		<div class="upload">Upload </div>
+
+		<label for="upload_button" class="upload">Upload</label>
+		<input multiple style="opacity:0" type="file" name="upload_file_path" id="upload_button">
+
 		<div class="undo">Undo </div>
 		<div class="re-size">Re-size</div> 
 		<div class="contrast">Contrast</div>

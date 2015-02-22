@@ -48,6 +48,15 @@ var perform = function(action){
 	case 'blur':
 		blurImage("#filter_box_image");
 		break;			
+	case 'load_my_images':
+		loadMyImages("#filter_box_image");
+		break;
+	case 'next_image':
+		nextImage("#filter_box_image");
+		break;
+	case 'save_image':
+		saveImage("#filter_box_image");
+		break;
 	default:
 	break;	
     }

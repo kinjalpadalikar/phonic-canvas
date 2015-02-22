@@ -1,6 +1,7 @@
 $(document).ready(function() {
     
-    initializeImageLibrary ();
+    initializeImageLibrary();
+	
     var running = false;
     var mic = new Wit.Microphone();
     var info = function (msg) {
