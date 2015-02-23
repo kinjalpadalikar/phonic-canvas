@@ -1,79 +1,159 @@
 $(document).ready(function() {
-    
+
     initializeImageLibrary();
-	
-    var running = false;
-    var mic = new Wit.Microphone();
-    var info = function (msg) {
-      document.getElementById("status").innerHTML = msg;
-    };
-    var error = function (msg) {
-      document.getElementById("status").innerHTML = msg;
-    };
-    mic.onready = function () {
-      if (!running) {
-    info("Microphone is ready to record");
-    console.log("Ready");
-          running = true;
-          window.setTimeout(function(){ mic.start();  }, 200);	
-}
-    };
-    mic.onaudiostart = function () {
-      info("Recording started");
-      console.log("Recording started");
-      
-      window.setTimeout(function(){ mic.stop();  }, 5000);	
-    
-      error("");
-    };
-    mic.onaudioend = function () {
-      info("Recording stopped, processing started");
-      console.log("audioend");
-running = false;
-      
-    };
-    mic.onresult = function (intent, entities, text, confidence) {
-      var r = kv("intent", intent);
-var entity = undefined;
 
-      for (var k in entities) {
-        var e = entities[k];
+    var controller = new MicrophoneController();
 
-        if (!(e instanceof Array)) {
-          entity = kv(k, e.value);
-    r += entity;
-        } else {
-          for (var i = 0; i < e.length; i++) {
-            entity = kv(k, e[i].value);
-            r += entity;
-          }
-        }
-      }
+    controller.start();
+});
 
-      console.log(intent + ":" + entity + ":" + text.msg_body + ":" + confidence);
+var info1 = function (msg) {
+    document.getElementById("status1").innerHTML = msg;
+};
 
-      document.getElementById("result").innerHTML = r+text.msg_body;
-      var action = new Object();
-      action.name = intent;
-      perform(action);
+var error1 = function (msg) {
+    document.getElementById("result1").innerHTML = msg;
+};
 
-    };
-    mic.onerror = function (err) {
-      error("Error: " + err);
-    };
-    mic.onconnecting = function () {
-      info("Microphone is connecting");
-    };
-    mic.ondisconnected = function () {
-      info("Microphone is not connected");
-    };
+var info2 = function (msg) {
+    document.getElementById("status2").innerHTML = msg;
+};
 
-    mic.connect("I6XF2VG44VRAS72NEAAFJDXE6ZBRJPF2");
+var error2 = function (msg) {
+    document.getElementById("result2").innerHTML = msg;
+};
 
-    function kv (k, v) {
-      if (toString.call(v) !== "[object String]") {
-        v = JSON.stringify(v);
-      }
-      return k + "=" + v + "\n";
+function MicrophoneController() {
+
+    this.start = function() {
+        this.setup();
+        this.startListening();
     }
-}); 
+
+    this.setup = function() {
+        this.setupMicrophoneCallbacks();
+    }
+
+    this.setupMicrophoneCallbacks = function() {
+
+        var firstMicrophone = this.firstMicrophone;
+        var secondMicrophone = this.secondMicrophone;
+
+        var epoch = this.epoch;
+
+        var running = false;
+
+        this.firstMicrophone.onready = function() {
+
+            if (!running) {
+                running = true;
+
+                window.setTimeout(function() {
+                    firstMicrophone.start();
+                }, 1);
+
+                window.setTimeout(function() {
+                    secondMicrophone.start();
+                }, epoch / 2);
+            }
+        }
+
+        this.secondMicrophone.onready = function() {
+
+        }
+
+        this.firstMicrophone.onerror = function (err) {
+            error1("Primary Mic Error: " + err);
+        };
+
+        this.secondMicrophone.onerror = function (err) {
+            error2("Secondary Mic Error: " + err);
+        };
+
+        this.firstMicrophone.onconnecting = function () {
+            info1("Primary Mic is connecting");
+        };
+
+        this.secondMicrophone.onconnecting = function () {
+            info2("Secondary Mic is connecting");
+        };
+
+        this.firstMicrophone.ondisconnected = function () {
+            info1("Primary Mic is not connected");
+        };
+
+        this.secondMicrophone.ondisconnected = function () {
+            info2("Secondary Mic is not connected");
+        };
+
+        this.firstMicrophone.onaudiostart = function () {
+            info1("Primary Mic Recording started");
+
+            window.setTimeout(function(){ firstMicrophone.stop(); }, epoch);
+
+            error1("");
+        };
+
+        this.secondMicrophone.onaudiostart = function () {
+            info2("Secondary Mic Recording started");
+
+            window.setTimeout(function(){ secondMicrophone.stop(); }, epoch);
+
+            error2("");
+        };
+
+        this.firstMicrophone.onaudioend = function() {
+            info1("Primary Mic Recording stopped, processing started");
+            running = false;
+        };
+
+        this.secondMicrophone.onaudioend = function() {
+            info2("Secondary Mic Recording stopped, processing started");
+        };
+
+        this.firstMicrophone.onresult = this.onresultFunction;
+        this.secondMicrophone.onresult = this.onresultFunction;
+    }
+
+    this.connectMicrophones = function() {
+        this.firstMicrophone.connect( this.witInstanceKey);
+        this.secondMicrophone.connect(this.witInstanceKey);
+    }
+
+    this.startListening = function() {
+        this.connectMicrophones();
+    }
+
+    this.wasUsed = false;
+
+    this.onresultFunction = function (intent, entities, text, confidence) {
+
+        if (!this.wasUsed) {
+
+            var action = {
+                name: intent,
+                text: text,
+                confidence : confidence
+            };
+
+            if (intent === undefined && confidence >= 0.5) {
+                this.wasUsed = true;
+            }
+
+            perform(action);
+        }
+        else {
+            this.wasUsed = false;
+        }
+    };
+
+    this.firstMicrophone  = new Wit.Microphone();
+    this.secondMicrophone = new Wit.Microphone();
+
+    this.witInstanceKey = "XDEY2WTA22AGXVBU6XO4QHSAO37ICSBU";
+
+    this.epoch = 3000;
+}
+
+
+
