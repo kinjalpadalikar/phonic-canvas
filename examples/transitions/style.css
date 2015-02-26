@@ -4,6 +4,7 @@
   overflow:hidden; /* So the sliding bit doesn't stick out. */
   margin:0 auto;
 }
+
 #slide1_images {
   /* This is the bit that moves. It has 4 images, so 4 * 450 = 1800. You could use javascript
   to work this out instead by counting images. */
@@ -14,6 +15,7 @@
   -o-transition:all 1.0s ease-in-out;
   transition:all 1.0s ease-in-out;
 }
+
 #slide1_images img {
   padding:0;
   margin:0;
