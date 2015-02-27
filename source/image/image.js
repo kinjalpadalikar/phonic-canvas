@@ -1,3 +1,9 @@
+
+var smallWidth = "20%";
+var normalWidth = "30%";
+var defaultWidth  = "80%";
+var largeWidth  = "50%";
+
 var setBoxSize = function(name) {
     var imageElement = document.getElementById(name);
     imageElement.style.width  = "100%";
@@ -6,7 +12,7 @@ var setBoxSize = function(name) {
 
 var makeItBigger = function(name){
 	var elements = document.getElementsByClassName("boxes");
-	elements[0].style.width = "80%";
+	elements[0].style.width = largeWidth;
 
 	Caman(name, function () {
 		this.resize({
@@ -24,7 +30,7 @@ var makeItBigger = function(name){
 
 var makeItNormalSize = function(name, applyEffects) {
 	var elements = document.getElementsByClassName("boxes");
-	elements[0].style.width = "80%";
+	elements[0].style.width = normalWidth;
 
 	Caman(name, function () {
 		this.resize({
@@ -44,9 +50,31 @@ var makeItNormalSize = function(name, applyEffects) {
 	console.log ("making it normal size");
 }
 
+var makeItDefaultSize = function(name, applyEffects) {
+	var elements = document.getElementsByClassName("boxes");
+	elements[0].style.width = defaultWidth;
+
+	Caman(name, function () {
+		this.resize({
+			width: 300
+	 	});
+
+		// You still have to call render!
+		this.render(function() {
+            setBoxSize(name.slice(1));
+
+			if (applyEffects) {
+				applyEffects();
+			}
+		});
+	});
+
+	console.log ("making it default size");
+}
+
 var makeItSmaller = function(name){
 	var elements = document.getElementsByClassName("boxes");
-	elements[0].style.width = "30%";
+	elements[0].style.width = smallWidth;
 
 	Caman(name, function () {
 		this.resize({
@@ -74,7 +102,7 @@ var resetImage = function(name){
 	});
 
 	var elements = document.getElementsByClassName("boxes");
-	elements[0].style.width = "50%";
+	elements[0].style.width = normalWidth;
 	console.log ("resetting image");
 }
 
@@ -186,7 +214,7 @@ var widenElementById = function(id) {
 }
 
 var applyDefaultEffects = function() {
-	makeItNormalSize("#filter_box_image");
+	makeItDefaultSize("#filter_box_image");
 	applyRetroFilter("#filter_box_image2");
 	applyLomoFilter("#filter_box_image3");
 	applyHdrFilter("#filter_box_image4");
@@ -302,7 +330,7 @@ var showCurrentImage = function(name, effects) {
 
 		replaceElementById(name.slice(1), image);
 
-		makeItNormalSize(name, effects);
+		makeItDefaultSize(name, effects);
 	});
 
 	reader.readAsDataURL(currentImage);

@@ -11,9 +11,10 @@
 	<script src="source/library/library.js"> </script>
 	<script src="source/image/image.js"> </script>
 	<script src="source/action/action.js"> </script>
-	<script src="source/mic/mic.js"> </script>
+	<script src="source/mic/mic-button.js"> </script>
 
 	<link rel="stylesheet" type="text/css" href="source/page/style.css">
+	<link rel="stylesheet" type="text/css" href="source/mic/microphone/microphone.min.css">
 </head>
 <body>
 
@@ -55,10 +56,11 @@
         </div>
 	</div>
 
-	<div id= "status1"></div>
-	<div id= "status2"></div>
-	<div id= "result1"></div>
-	<div id= "result2"></div>
+	<div class="mic_container">
+		<center><div id="microphone"></div></center>
+		<pre id="status"></pre>
+		<div id="error"></div>
+	</div>
 
 	<div class="all_boxes">
 
