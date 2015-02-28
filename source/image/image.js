@@ -1,8 +1,8 @@
 
 var smallWidth = "20%";
-var normalWidth = "30%";
+var normalWidth = "50%";
 var defaultWidth  = "80%";
-var largeWidth  = "50%";
+var largeWidth  = "70%";
 
 var setBoxSize = function(name) {
     var imageElement = document.getElementById(name);
@@ -16,7 +16,7 @@ var makeItBigger = function(name){
 
 	Caman(name, function () {
 		this.resize({
-			width: 500
+			width: 1200
 	 	});
 
 		// You still have to call render!
@@ -34,7 +34,7 @@ var makeItNormalSize = function(name, applyEffects) {
 
 	Caman(name, function () {
 		this.resize({
-			width: 300
+			width: 900
 	 	});
 
 		// You still have to call render!
@@ -56,7 +56,7 @@ var makeItDefaultSize = function(name, applyEffects) {
 
 	Caman(name, function () {
 		this.resize({
-			width: 300
+			width: 900
 	 	});
 
 		// You still have to call render!
@@ -78,7 +78,7 @@ var makeItSmaller = function(name){
 
 	Caman(name, function () {
 		this.resize({
-		  width: 200
+		  width: 500
 		});
 
 		// You still have to call render!
@@ -166,6 +166,7 @@ var reformat_page = function() {
 	widenElementById("box1");
 	centerElementById("filter_box1");
 	removeTextFromElementById("original_name");
+	resetImage("#filter_box_image");
 }
 
 var removeElementById = function(id) {
@@ -197,20 +198,20 @@ var centerElementById = function(id) {
 	element.style.display = "block";
 }
 
+var widenElementById = function(id) {
+	var element = document.getElementById(id);
+	if (element === null) {
+		return;
+	}
+	element.style.width = "50%";
+}
+
 var removeTextFromElementById = function(id) {
 	var element = document.getElementById(id);
 	if (element === null) {
 		return;
 	}
 	element.innerHTML = "";
-}
-
-var widenElementById = function(id) {
-	var element = document.getElementById(id);
-	if (element === null) {
-		return;
-	}
-	element.style.width = "100%";
 }
 
 var applyDefaultEffects = function() {

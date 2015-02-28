@@ -13,7 +13,7 @@ var info = function (msg) {
 };
 
 var error = function (msg) {
-    document.getElementById("result").innerHTML = msg;
+    document.getElementById("error").innerHTML = msg;
 };
 
 function MicrophoneController() {
