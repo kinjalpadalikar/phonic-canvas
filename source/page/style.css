@@ -38,7 +38,7 @@
     border-width: 1px;
     background-color: #4D505B;
     float:left;
-    height:476px;
+    height:544px;
     width:100%;
     padding-top:1px;
     padding-bottom:1%;
@@ -226,7 +226,7 @@ body
 #slide1_container
 {
 	width:900px;
-	height:476px;
+	height:544px;
 	overflow:hidden; /* So the sliding bit doesn't stick out. */
 	margin:0 auto;
 }
@@ -236,7 +236,7 @@ body
 	/* This is the bit that moves. It has 4 images, so 4 * 450 = 1800. You could use javascript
 	to work this out instead by counting images. */
 	width:3600px;
-	height:476px;
+	height:544px;
 
 	-webkit-transition:all 1.0s ease-in-out;
 	-moz-transition:all 1.0s ease-in-out;
