@@ -87,7 +87,7 @@ function MicrophoneController() {
 
     this.microphone = new Wit.Microphone(document.getElementById("microphone"));
 
-    this.witInstanceKey = "XDEY2WTA22AGXVBU6XO4QHSAO37ICSBU";
+    this.witInstanceKey = "A5MYU7PDGTWH5QDAWSAVAN44ELQQW3KH";
 }
 
 
